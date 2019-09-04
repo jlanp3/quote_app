@@ -21,4 +21,6 @@ require("materialize-css")
 
 $(document).on('turbolinks:load', function(){
   $('.parallax').parallax();
+  M.updateTextFields();
+  $('.materialboxed').materialbox();
 })

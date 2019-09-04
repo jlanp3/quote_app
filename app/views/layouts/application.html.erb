@@ -18,6 +18,7 @@
         <%= yield %>
       <% else %>
         <div class="container">
+          <%= render 'layouts/flashmsg' %>
           <%= yield %>
         </div>
       <% end %>

@@ -1,0 +1,24 @@
+<h1 class="header center teal-text text-lighten-2">Looking for Appliances</h1>
+
+
+<div class="row">
+  <div class="col s12">
+    <% @appliances.each do |appliance| %>
+      <%= link_to appliance_path(appliance) do %>
+        <div class="col s3">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img src="<%= url_for(appliance.logo) %>" weight= "5%">
+            </div>
+            <div class="card-action">
+              <p class="teal-text light center"><%= appliance.equipment %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+            
+        

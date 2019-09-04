@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="container">
+    <div class="col s12 center red-text">
+      <% if @appliance.errors.any? %>
+        <%= pluralize( @appliance.errors.count, 'error' ) %><em> have being encountered</em>
+        <ul>
+            <% @appliance.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% if @appliance.new_record? %>
+  <h1 class="header center teal-text text-lighten-2">New Appliance</h1>
+<% else %>
+  <h1 class="header center teal-text text-lighten-2">Update <%= "#{@appliance.brand}" %></h1>
+<% end %>
+  
+<div class="row">
+  <%= form_for @appliance, class: "col s12" do |f| %>
+    <div class="row">
+      <div class="input-field col s12 center">
+        <%= f.text_field :brand, placeholder: "Brand", id: "brand", class: "validate" %>
+        <%= f.label :brand, for: "brand", class: "active" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12 center">
+        <%= f.text_field :equipment, id: "equipment", class: "validate" %>
+        <%= f.label :equipment, for: "equipment", class: "active" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12 center">
+        <%= f.text_field :price, id: "price", class: "validate" %>
+        <%= f.label :price, for: "price", class: "active" %>
+      </div>
+    </div>
+    <div class="row center">
+      <div class="container">
+        <% if @appliance.logo.attached? %>
+          <div class="col s12">
+            <em>Pic</em><br>
+            <%= f.file_field :logo do %>
+            <%= image_tag(@appliance.logo, width: "200px") %> <br>
+            <% end %>
+            <p><b>Upload new logo</b></p>
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>File</span>
+                <%= f.file_field :logo %>
+              </div>
+              <div class="file-path-wrapper">
+                <%= text_field_tag :logo, "#{@appliance.logo.filename}", class: "file-path validate" %>
+              </div>
+            </div>
+            <p class="help-block">Allowed: png, gif, jpg/jpeg</p>
+          </div>
+        <% else %>
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>File</span>
+              <%= f.file_field :logo %>
+            </div>
+            <div class="file-path-wrapper">
+              <%= text_field_tag :logo, nil, class: "file-path validate" %>
+            </div>
+          </div>
+          <p class="help-block">Allowed: png, gif, jpg/jpeg</p>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <%= @appliance.new_record? ? (f.button "Create", class: " green waves-effect waves-light btn right") : (f.button "Update", class: " green waves-effect waves-light btn right") %>
+      </div>
+      <div class="col s6">
+        <%= link_to "Cancel", :back, class: "blue waves-effect waves-light btn left" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+

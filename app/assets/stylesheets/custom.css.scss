@@ -4,8 +4,14 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-color: #ECEFF1;
 }
 
 main {
   flex: 1 0 auto;
+}
+
+#logo-index {
+  padding-top: 10px;
+  padding-left: 30px;
 }
