@@ -1,18 +1,3 @@
-<div class="row">
-  <div class="container">
-    <div class="col s12 center red-text">
-      <% if @appliance.errors.any? %>
-        <%= pluralize( @appliance.errors.count, 'error' ) %><em> have being encountered</em>
-        <ul>
-            <% @appliance.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-        </ul>
-      <% end %>
-    </div>
-  </div>
-</div>
-
 <% if @appliance.new_record? %>
   <h1 class="header center teal-text text-lighten-2">New Appliance</h1>
 <% else %>
@@ -44,9 +29,7 @@
         <% if @appliance.logo.attached? %>
           <div class="col s12">
             <em>Pic</em><br>
-            <%= f.file_field :logo do %>
             <%= image_tag(@appliance.logo, width: "200px") %> <br>
-            <% end %>
             <p><b>Upload new logo</b></p>
             <div class="file-field input-field">
               <div class="btn">
